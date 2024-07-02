@@ -1,0 +1,57 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4 text-primary">Agregar equipo</h2>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg border-0 rounded-lg">
+        <div class="card-header bg-primary text-white text-center">
+          Formulario de Equipo
+        </div>
+        <div class="card-body bg-light">
+          <form [formGroup]="equipoForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="nombre">Nombre del equipo</label>
+              <input type="text" class="form-control" formControlName="nombre" id="nombre" placeholder="Ingrese el nombre del equipo" />
+              <div class="text-danger mt-2" *ngIf="enviado && myForm.nombre.errors?.required">
+                Este campo es obligatorio
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="categoria">Categoría</label>
+              <select class="custom-select form-control" formControlName="categoria" id="categoria">
+                <option value="">SELECCIONA UNA CATEGORIA:</option>
+                <option *ngFor="let categoria of categoriaEquipo" [value]="categoria">
+                  {{ categoria }}
+                </option>
+              </select>
+              <div class="text-danger mt-2" *ngIf="enviado && myForm.categoria.errors?.required">
+                Debes seleccionar una categoría
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="pais">País</label>
+              <input type="text" class="form-control" formControlName="pais" id="pais" placeholder="Ingrese el país" />
+              <div class="text-danger mt-2" *ngIf="enviado && myForm.pais.errors?.required">
+                Este campo es obligatorio
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="miembros">Miembros</label>
+              <input type="text" class="form-control" formControlName="miembros" id="miembros" placeholder="Ingrese los miembros" />
+              <div class="text-danger mt-2" *ngIf="enviado && myForm.miembros.errors?.required">
+                Este campo es obligatorio
+              </div>
+            </div>
+
+            <div class="form-group text-center">
+              <button class="btn btn-success btn-lg btn-block" type="submit">Agregar equipo</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
