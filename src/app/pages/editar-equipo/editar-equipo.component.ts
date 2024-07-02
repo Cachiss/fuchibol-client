@@ -72,12 +72,13 @@ get myForm(){
 getEquipo(id){
  this.equipoService.getEquipo(id)
    .subscribe((data) => {
+    console.log(data);
      if (data) {
        this.EditarequipoForm.setValue({
-         nombre: data['nombre'] || '',
-         categoria: data['categoria'] || '',
-         pais: data['pais'] || '',
-         miembros: data['miembros'] || '', // Asegúrate de manejar esta propiedad adecuadamente
+         nombre: data.team['name'] || '',
+         categoria: data.team['category'] || '',
+         pais: data.team['country'] || '',
+         miembros: data.team['members'] || '', // Asegúrate de manejar esta propiedad adecuadamente
        });
      }
    });
@@ -92,7 +93,12 @@ onSubmit(){
     if(window.confirm('¿Estás seguro que lo deseas modificar?')){
       let id=this.actRoute.snapshot.paramMap.get('id');
       this.equipoService
-      .updateEquipo(id,this.EditarequipoForm.value)
+      .updateEquipo(id,{
+        name: this.EditarequipoForm.value.nombre,
+        category: this.EditarequipoForm.value.categoria,
+        country: this.EditarequipoForm.value.pais,
+        members: this.EditarequipoForm.value.miembros
+      })
       .subscribe({
         complete:()=>{
           this.router.navigateByUrl('/listar-equipos');

@@ -48,7 +48,13 @@ export class AgregarEquipoComponent implements OnInit {
     if (!this.equipoForm.valid) {
       return false;
     } else {
-      return this.equipoService.agregarEquipo(this.equipoForm.value).subscribe({
+      console.log(this.equipoForm.value);
+      return this.equipoService.agregarEquipo({
+        name: this.equipoForm.value.nombre,
+        country: this.equipoForm.value.pais,
+        members: this.equipoForm.value.miembros,
+        category: this.equipoForm.value.categoria
+      }).subscribe({
         complete: () => {
           console.log('El equipo se ha agregado correctamente');
           this.ngZone.run(() => this.router.navigateByUrl('/listar-equipos'));

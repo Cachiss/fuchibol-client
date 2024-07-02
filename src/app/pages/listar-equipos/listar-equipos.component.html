@@ -23,9 +23,9 @@
                         <tbody>
                             <tr *ngFor="let equipo of equipos; let i = index">
                                 <td>{{ equipo._id }}</td>
-                                <td>{{ equipo.nombre }}</td>
-                                <td>{{ equipo.pais }}</td>
-                                <td>{{ equipo.miembros.join(', ') }}</td>
+                                <td>{{ equipo.name }}</td>
+                                <td>{{ equipo.country }}</td>
+                                <td>{{ equipo.members.join(', ') }}</td>
                                 <td>{{ equipo.categoria }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
