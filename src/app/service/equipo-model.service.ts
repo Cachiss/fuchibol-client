@@ -8,7 +8,7 @@ import { throwError } from 'rxjs';
 })
 export class EquipoModelService {
 
-  baseUri: string = 'http://fuchibol-server.vercel.app/api/teams';
+  baseUri: string = 'https://fuchibol-server.vercel.app/api/teams';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
